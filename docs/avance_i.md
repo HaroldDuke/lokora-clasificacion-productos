@@ -17,6 +17,8 @@ Se propone una extensión de Lokora, una plataforma de comercio desarrollada en 
 
 Un comercio que publica productos en Lokora debe cargar fotografía, descripción y categoría de cada referencia. Cuando la categoría se asigna a mano, el tiempo de publicación crece con el número de productos y pueden aparecer criterios inconsistentes entre vendedores. La aplicación ya almacena una categoría por producto y administra sus imágenes, lo que permite incorporar una asistencia visual durante la carga.
 
+**Aplicación original.** Video de la aplicación de Lokora en funcionamiento: https://youtube.com/shorts/1stYAlFeCe8
+
 **Pregunta de investigación.** ¿Puede un modelo de clasificación de imágenes sugerir correctamente una de tres categorías (frutas, verduras, envasados) con calidad suficiente para ayudar al vendedor?
 
 **Alcance.** Una fotografía con un producto principal y tres categorías. Panadería, artesanías, experiencias y productos mixtos se registran manualmente. La clasificación no interviene en pagos.
@@ -77,6 +79,6 @@ Se revisaron cinco trabajos. Los datos bibliográficos se verificaron en arXiv. 
 
 [5] Gross, L., Walter, R., Zoppi, N., Justus, A., Gambetti, A., Han, Q. y Kaiser, M. (2025). Cross-Platform E-Commerce Product Categorization and Recategorization: A Multimodal Hierarchical Classification Approach. https://arxiv.org/abs/2508.20013
 
-[6] Axiom. Lokora, proyecto de la hackatón Open Payments, Medellín, 16 y 17 de octubre de 2026.
+[6] Axiom. Lokora, proyecto de la hackatón Open Payments, Medellín, 16 y 17 de octubre de 2026. Video de la aplicación: https://youtube.com/shorts/1stYAlFeCe8
 
 [7] Keras. Transfer learning and fine tuning. https://keras.io/guides/transfer_learning/

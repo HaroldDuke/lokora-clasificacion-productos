@@ -9,7 +9,7 @@ from pathlib import Path
 
 ESC = {'\\': r'\textbackslash{}', '&': r'\&', '%': r'\%', '$': r'\$', '#': r'\#',
        '_': r'\_', '{': r'\{', '}': r'\}', '~': r'\textasciitilde{}', '^': r'\textasciicircum{}'}
-SIMB = {'→': r'$\rightarrow$', '≥': r'$\geq$', '×': r'$\times$', '–': '--', '—': '---'}
+SIMB = {'→': r'$\rightarrow$', '≥': r'$\geq$', '×': r'$\times$', '–': '--', '—': '---', '¿': '?`', '¡': '!`'}
 
 
 def esc(t):
