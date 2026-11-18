@@ -46,7 +46,31 @@ Se usan solo las fotografías naturales. Las imágenes icónicas y las descripci
 
 **Límite de independencia.** Los metadatos no identifican el objeto físico ni la sesión de captura, así que no se puede afirmar separación por producto. Con fotos propias se agruparán por producto o sesión, de modo que un grupo quede en una sola partición.
 
-## 8. Resultados disponibles al corte
+## 8. Herramientas y construcción del pipeline
+
+Hoy el pipeline es una secuencia de scripts de Python que se ejecutan en orden, sin un orquestador. Cada paso lee lo que dejó el anterior y guarda lo suyo, y el notebook de Google Colab los encadena:
+
+1. `preparar_grocery.py` descarga el conjunto público, comprueba su SHA-256 y genera el manifiesto (`manifest.csv`) con ruta, clase, partición, fuente, licencia y hash de cada imagen.
+2. `evaluar_referencias.py` entrena las dos referencias con entrenamiento y validación, y guarda sus métricas en `referencias_validacion.json`.
+3. `entrenar.py` valida los datos, entrena MobileNetV2 y guarda en una carpeta por ejecución el modelo, las métricas, las curvas, la matriz de confusión, las predicciones, las versiones de las bibliotecas y el hash del modelo.
+4. `servicio_inferencia.py` carga ese modelo y lo expone como API (`POST /predict-category`).
+
+| Etapa | Herramienta | Estado |
+|---|---|---|
+| Descarga y verificación de datos | Python (urllib, hashlib), SHA-256 | Usada |
+| Preparación y manifiesto | Python, pandas, Pillow | Usada |
+| Referencias | scikit-learn | Usada |
+| Entrenamiento | TensorFlow/Keras en Google Colab con GPU T4 | Usada |
+| Registro de cada ejecución | Archivos JSON y CSV con parámetros, versiones y hashes | Usada |
+| Control de versiones | Git y GitHub | Usada |
+| Servicio de inferencia | FastAPI y Uvicorn | Escrito, aún no ejecutado |
+| Seguimiento de experimentos | Weights & Biases | Propuesta (guía del curso), sin integrar |
+| Empaquetado y despliegue | Docker, y Hugging Face Spaces o Google Cloud Run | Propuesta |
+| Pruebas automáticas al subir código | GitHub Actions | Propuesta |
+
+**Por qué no Airflow por ahora.** El entrenamiento completo dura unos 6,5 minutos, el flujo es lineal y se lanza a mano. Airflow exige mantener un servidor, una base de datos y definir tareas y dependencias en un DAG, y para este tamaño añadiría trabajo sin dar nada a cambio. Tendría sentido más adelante, si las correcciones de los vendedores llegan con volumen suficiente para reentrenar de forma periódica: un DAG con las tareas extraer correcciones, validar datos, reentrenar, evaluar y registrar el resultado. Mientras tanto, los scripts con manifiesto y hashes dan la trazabilidad que el proyecto necesita, y Weights & Biases cubriría el seguimiento de experimentos.
+
+## 9. Resultados disponibles al corte
 
 Esta sección recoge las referencias de comparación, evaluadas sobre las 296 fotografías de validación. La evaluación de MobileNetV2 y de la partición de prueba se reporta en el Avance III.
 
@@ -55,13 +79,13 @@ Esta sección recoge las referencias de comparación, evaluadas sobre las 296 fo
 | Clase más frecuente | 0,3750 | 0,1818 | Ejecutado |
 | Histograma RGB y regresión logística | 0,5304 | 0,5136 | Ejecutado |
 
-## 9. Repositorio y reproducibilidad
+## 10. Repositorio y reproducibilidad
 
 Repositorio en GitHub: https://github.com/HaroldDuke/lokora-clasificacion-productos
 
 El repositorio está organizado en `ml/` (código), `notebooks/`, `config/`, `datos/` (plantillas), `resultados/`, `diagramas/` y `docs/`, e incluye un README con instalación, uso y dependencias. El antecedente de la aplicación pertenece al equipo Axiom (https://github.com/cataia-code/interledger-axiom-hackathon); esta extensión es un trabajo académico individual.
 
-## 10. Siguientes pasos
+## 11. Siguientes pasos
 
 | Entrega | Contenido |
 |---|---|
