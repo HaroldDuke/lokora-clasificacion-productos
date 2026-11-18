@@ -96,7 +96,7 @@ def convertir(md):
             m = re.match(r'!\[(.*?)\]\((.*?)\)', l)
             img = 'figuras/' + Path(m.group(2)).name
             out.append(r'\begin{figure}[htbp]\centering' + '\n' +
-                       r'\includegraphics[width=0.92\textwidth]{' + img + '}\n' +
+                       r'\includegraphics[width=0.92\textwidth]{' + img + r'}\par\vspace{0.4em}' + '\n' +
                        r'{\small ' + inline(m.group(1)) + r'\par}' + '\n' + r'\end{figure}')
         elif l.startswith('|'):
             filas, alin = [], None
@@ -108,6 +108,13 @@ def convertir(md):
                     filas.append(c)
                 i += 1
             out.append(tabla(filas, alin or ['l'] * len(filas[0])))
+            continue
+        elif l.startswith('- '):
+            out.append(r'\begin{itemize}[nosep]')
+            while i < len(lineas) and lineas[i].startswith('- '):
+                out.append(r'\item ' + inline(lineas[i][2:]))
+                i += 1
+            out.append(r'\end{itemize}')
             continue
         elif re.match(r'\d+\. ', l):
             out.append(r'\begin{enumerate}[nosep]')
