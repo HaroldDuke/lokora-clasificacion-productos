@@ -1,0 +1,12 @@
+flowchart TB
+    A[Fotografías públicas y manifiesto] --> B[Calidad licencia y duplicados SHA256]
+    B --> C[Listas oficiales de entrenamiento validación y prueba]
+    C --> D[Referencias y MobileNetV2 con base congelada]
+    D --> E[Comparar en validación y evaluar prueba al cerrar diseño]
+    E --> F[Guardar candidato métricas clases y versiones]
+    F --> G{Revisión para promoción}
+    G -->|Aprobado| H[Servicio de inferencia propuesto]
+    G -->|Requiere cambios| D
+    H --> I[Vendedor confirma o corrige]
+    I --> J[Registrar y curar correcciones]
+    J -. Nuevo conjunto versionado .-> A

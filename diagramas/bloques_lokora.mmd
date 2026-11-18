@@ -1,0 +1,12 @@
+flowchart TB
+    UI[React catálogo] <--> API[Express autenticación y catálogo]
+    API <--> DB[PostgreSQL y almacenamiento de imágenes]
+    API <--> ML[Servicio Python propuesto]
+    PUBLIC[Datos públicos y fotos propias] --> CUR[Curación y manifiesto]
+    DB -. Correcciones futuras .-> CUR
+    CUR --> COLAB[Experimento reproducible en Colab]
+    COLAB --> REG[Registro de candidato y revisión humana]
+    REG --> ML
+    ML --> SUG[Sugerencia de categoría]
+    SUG --> CONF[Confirmación del vendedor]
+    CONF --> API

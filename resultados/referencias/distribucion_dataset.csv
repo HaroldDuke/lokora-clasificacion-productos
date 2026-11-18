@@ -1,0 +1,4 @@
+split,envasados,frutas,verduras
+train,864,1142,634
+val,100,111,85
+test,781,1117,587

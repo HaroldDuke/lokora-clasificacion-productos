@@ -1,0 +1,27 @@
+{
+  "version": "0.1",
+  "scope": "Piloto de sugerencias visuales para productos de alimentación",
+  "categories": [
+    {
+      "id": "envasados",
+      "description": "Productos de alimentación en envase, como leche, yogur y zumo; corresponde a Packages en Grocery Store Dataset."
+    },
+    {
+      "id": "frutas",
+      "description": "Frutas frescas enteras según uso comercial; excluir bebidas y preparaciones."
+    },
+    {
+      "id": "verduras",
+      "description": "Verduras frescas según uso comercial; el tomate se etiqueta aquí por convención del piloto."
+    }
+  ],
+  "out_of_scope": [
+    "panadería",
+    "artesanías",
+    "experiencias",
+    "productos mixtos",
+    "fotografías sin producto"
+  ],
+  "human_confirmation": "Obligatoria para toda sugerencia; las categorías ajenas al piloto se seleccionan manualmente.",
+  "mapping": "Taxonomía global del modelo; el vendedor debe mapearla a una categoría de su propia tienda."
+}

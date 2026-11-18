@@ -1,0 +1,20 @@
+{
+  "ejecutado_utc": "2026-10-26T05:53:34.780705+00:00",
+  "particion_evaluada": "val",
+  "train_rows": 2640,
+  "val_rows": 296,
+  "test_rows_sin_evaluar": 2485,
+  "classes": [
+    "envasados",
+    "frutas",
+    "verduras"
+  ],
+  "python": "3.12.3",
+  "numpy": "2.4.4",
+  "pandas": "3.0.3",
+  "scikit_learn": "1.8.0",
+  "elapsed_seconds": 11.944146707999607,
+  "sha256_manifest": "d4090fba37169a8cd18803c04aa1f4e8e14db4f0052c74c72f064718be60fbd4",
+  "cnn_status": "Preparada sin entrenar; no hay métricas de MobileNetV2",
+  "source": "https://github.com/marcusklasson/GroceryStoreDataset"
+}

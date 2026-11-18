@@ -1,0 +1,9 @@
+datos/grocery_publico/
+resultados_cnn/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+docs/*.aux
+docs/*.log
+docs/*.out

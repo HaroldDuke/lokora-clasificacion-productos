@@ -1,0 +1,110 @@
+{
+  "clase_mas_frecuente": {
+    "accuracy": 0.375,
+    "macro_f1": 0.1818181818181818,
+    "classification_report": {
+      "envasados": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 100.0
+      },
+      "frutas": {
+        "precision": 0.375,
+        "recall": 1.0,
+        "f1-score": 0.5454545454545454,
+        "support": 111.0
+      },
+      "verduras": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 85.0
+      },
+      "accuracy": 0.375,
+      "macro avg": {
+        "precision": 0.125,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.1818181818181818,
+        "support": 296.0
+      },
+      "weighted avg": {
+        "precision": 0.140625,
+        "recall": 0.375,
+        "f1-score": 0.20454545454545453,
+        "support": 296.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        111,
+        0
+      ],
+      [
+        0,
+        85,
+        0
+      ]
+    ]
+  },
+  "histograma_rgb_logistica": {
+    "accuracy": 0.5304054054054054,
+    "macro_f1": 0.5136387918452009,
+    "classification_report": {
+      "envasados": {
+        "precision": 0.5703703703703704,
+        "recall": 0.77,
+        "f1-score": 0.6553191489361702,
+        "support": 100.0
+      },
+      "frutas": {
+        "precision": 0.6329113924050633,
+        "recall": 0.45045045045045046,
+        "f1-score": 0.5263157894736842,
+        "support": 111.0
+      },
+      "verduras": {
+        "precision": 0.36585365853658536,
+        "recall": 0.35294117647058826,
+        "f1-score": 0.3592814371257485,
+        "support": 85.0
+      },
+      "accuracy": 0.5304054054054054,
+      "macro avg": {
+        "precision": 0.5230451404373397,
+        "recall": 0.5244638756403462,
+        "f1-score": 0.5136387918452009,
+        "support": 296.0
+      },
+      "weighted avg": {
+        "precision": 0.5350937924648947,
+        "recall": 0.5304054054054054,
+        "f1-score": 0.5219320597327182,
+        "support": 296.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        77,
+        7,
+        16
+      ],
+      [
+        25,
+        50,
+        36
+      ],
+      [
+        33,
+        22,
+        30
+      ]
+    ]
+  }
+}
