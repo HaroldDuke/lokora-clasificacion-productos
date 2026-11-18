@@ -70,6 +70,19 @@ Hoy el pipeline es una secuencia de scripts de Python que se ejecutan en orden, 
 
 **Por qué no Airflow por ahora.** El entrenamiento completo dura unos 6,5 minutos, el flujo es lineal y se lanza a mano. Airflow exige mantener un servidor, una base de datos y definir tareas y dependencias en un DAG, y para este tamaño añadiría trabajo sin dar nada a cambio. Tendría sentido más adelante, si las correcciones de los vendedores llegan con volumen suficiente para reentrenar de forma periódica: un DAG con las tareas extraer correcciones, validar datos, reentrenar, evaluar y registrar el resultado. Mientras tanto, los scripts con manifiesto y hashes dan la trazabilidad que el proyecto necesita, y Weights & Biases cubriría el seguimiento de experimentos.
 
+**Herramientas que podrían complementar el pipeline.** Estas son las que existen para cada necesidad y para qué servirían en Lokora. Ninguna está integrada todavía.
+
+| Necesidad | Herramientas | Para qué serviría en Lokora |
+|---|---|---|
+| Orquestar los pasos | Apache Airflow, Prefect, Kubeflow Pipelines o Vertex AI Pipelines | Encadenar preparación, entrenamiento y evaluación con reintentos y ejecución programada, cuando haya reentrenamientos periódicos |
+| Versionar datos y modelos | DVC | Guardar versiones de las fotografías y del manifiesto junto al código, sin subirlas a Git |
+| Seguir experimentos y registrar modelos | Weights & Biases, MLflow | Comparar ejecuciones, ver las curvas en línea y marcar qué versión del modelo está en uso |
+| Empaquetar y desplegar | Docker, Google Cloud Run, Hugging Face Spaces | Publicar el servicio de inferencia en la nube para que el vendedor lo use desde una interfaz o una API |
+| Integración continua | GitHub Actions | Revisar el código y probar el servicio cada vez que se sube un cambio |
+| Vigilar el modelo en uso | Evidently u otras herramientas de monitoreo | Detectar si las fotografías de los vendedores se alejan de las del entrenamiento y si suben las correcciones |
+
+La elección entre estas herramientas depende del tamaño del equipo y del volumen de datos. Para este proyecto, Weights & Biases y Docker son las que más aportan primero.
+
 ## 9. Resultados disponibles al corte
 
 Esta sección recoge las referencias de comparación, evaluadas sobre las 296 fotografías de validación. La evaluación de MobileNetV2 y de la partición de prueba se reporta en el Avance III.
